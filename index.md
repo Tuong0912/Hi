@@ -1,4 +1,3 @@
-# Hi
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +39,7 @@
         this.dichuyen = function (thanhdo) {
             this.x1 += this.vx;//thay đôi tọa độ bóng
             this.y1 += this.vy;//thay đôi tọa độ bóng
-            if (this.x1 > canvas.width - this.bankinh || this.x1 < 0)//bóng đập cạnh thì naỷ lại
+            if (this.x1 > canvas.width - this.bankinh || this.x1 < 0)//bóng đập cạnh thì nảy lại
                 this.vx = -this.vx;
 
             if (this.x1 < thanhdo.x + (thanhdo.dai) && this.y1 < thanhdo.y + thanhdo.rong &&
@@ -132,7 +131,7 @@
     let hang1 = 10;
     let cot1 = 8;
     let sl = hang1 * cot1;
-    let bong = new Bong(250, 280, 10, 1, 1);
+    let bong = new Bong(250, 280, 10, 0.82, 0.89);
     let thanhdo = new Thanhdo("black", 220, 640, 90, 10, 1.5);
     let mang = [];
     let diem = 0;
@@ -166,7 +165,7 @@
 
     function gamewin() {
         document.getElementById("rs").innerHTML = diem;
-        if (diem > 7) {
+        if (diem >=6) {
             clearInterval(start);
             alert("Giỏi!!!")
         }
