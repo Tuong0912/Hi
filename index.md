@@ -6,7 +6,7 @@
 </head>
 <body onload="chuyendong()">
 <canvas id="myCanvas" width="500px" height="650px"
-        style=" border:5px solid red; left: 400px;position: absolute"></canvas>
+        style=" border:5px solid black; left: 400px;position: absolute"></canvas>
 <h2 style="position: absolute ; left: 300px; top:5px">Điểm:</h2>
 <button type="button" onclick="choi()" style="width: 80px;height: 50px ;position: absolute;top: 100px;left: 300px ">PLAY
 </button>
@@ -20,7 +20,7 @@
     let canvas = document.getElementById("myCanvas");
     let text = canvas.getContext('2d');
     let grd = text.createLinearGradient(0, 0, 1000, 0);//Setup đổi màu bóng
-    grd.addColorStop(0, "red");//Setup đổi màu bóng
+    grd.addColorStop(0, "white");//Setup đổi màu bóng
     grd.addColorStop(1, "blue");//Setup đổi màu bóng
 
     let Bong = function (x1, y1, bankinh, vx, vy) {
@@ -106,7 +106,7 @@
                     text.beginPath();
                     text.rect(b.cx, b.cy, gach.daiV, gach.rongV);
                     text.fill();
-                    text.fillStyle = "blue";
+                    text.fillStyle = "red";
                     text.closePath()
                 }
             });
@@ -131,7 +131,7 @@
     let hang1 = 10;
     let cot1 = 8;
     let sl = hang1 * cot1;
-    let bong = new Bong(250, 280, 10, 0.82, 0.89);
+    let bong = new Bong(250, 280, 10, 0.8, 0.89);
     let thanhdo = new Thanhdo("black", 220, 640, 90, 10, 1.5);
     let mang = [];
     let diem = 0;
