@@ -1,32 +1,62 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class Student {
+public class Student  {
     private String ten;
     private int tuoi;
     private String gender;
     private String diaChi;
     private double dtb;
     private int id;
-    private List<MonHoc> dsMonHoc = new ArrayList<>();
+    private String monHoc;
+    private String hanhKiem;
+    private Lop lop; //Khai báo 1 thuộc tính class trong class
+
+    public Lop lop() {
+        return lop;
+    }
+
+    public String tenLop() {
+        return lop.getTenLop();
+    }
+
+    public void setLop(Lop lop) {
+        this.lop = lop;
+    }
 
     public Student() {
     }
 
-    public Student(int id, String ten, int tuoi, String gender, String diaChi, double dtb, ArrayList<MonHoc> monhoc) {
+    public Student(Lop tenLop) { // Constructor có 1 tham số
+        this.lop = tenLop;
+    }
+
+    public String getMonHoc() {
+        return monHoc;
+    }
+
+    public void setMonHoc(String monHoc) {
+        this.monHoc = monHoc;
+    }
+
+
+    public Student(int id, String ten, int tuoi, String gender, String diaChi, double dtb, Lop tenLop, String monHoc , String hanhKiem) {
         this.ten = ten;
         this.tuoi = tuoi;
         this.gender = gender;
         this.diaChi = diaChi;
         this.dtb = dtb;
         this.id = id;
-        this.dsMonHoc = monhoc;
+        this.lop = tenLop;
+        this.monHoc = monHoc;
+        this.hanhKiem = hanhKiem;
     }
-
 
     public String ten() {
         return ten;
     }
+
 
     public void setTen(String ten) {
         this.ten = ten;
@@ -52,14 +82,6 @@ public class Student {
         return diaChi;
     }
 
-    public List<MonHoc> getDsMonHoc() {
-        return dsMonHoc;
-    }
-
-    public void setDsMonHoc(List<MonHoc> dsMonHoc) {
-        this.dsMonHoc = dsMonHoc;
-    }
-
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
@@ -80,15 +102,42 @@ public class Student {
         this.id = id;
     }
 
+    public String hanhKiem() {
+        return hanhKiem;
+    }
+
+    public void setHanhKiem(String hanhKiem) {
+        this.hanhKiem = hanhKiem;
+    }
 
     @Override
     public String toString() {
-        return "id=" + id + ", ten='" + ten + '\'' +
+        return "id=" + id +
+                ", ten='" + ten + '\'' +
                 ", tuoi=" + tuoi +
                 ", gender='" + gender + '\'' +
                 ", diaChi='" + diaChi + '\'' +
-                ", dtb=" + dtb + '\'' +
-                ", monhoc=" + dsMonHoc +
-                '}';
+                ", dtb=" + dtb +
+                ", lop=" + lop +
+                ", monHoc='" + monHoc + '\'' +
+                ", hanhKiem='" + hanhKiem + '\'';
     }
+
 }
+
+
+//    public void addMonHoc() {
+//        System.out.println("Nhập id môn học"); // Bỏ
+//        Scanner sc = new Scanner(System.in);
+//        int id = Integer.parseInt(sc.nextLine());
+//        dsMonHoc.add(new MonHoc(id));
+//    }
+
+
+//    public List<MonHoc> getDsMonHoc() {
+//        return dsMonHoc;
+//    } // Bỏ
+
+//    public void setDsMonHoc(List<MonHoc> dsMonHoc) {
+//        this.dsMonHoc = dsMonHoc;
+//    }
