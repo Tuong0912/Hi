@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu thời gian hết thì hãy cho làm nốt câu rồi mới kết thúc
     Scanner sc = new Scanner(System.in);
 
-    LocalTime localTime = LocalTime.now(); // Bắt đầu làm bài thì biến " d " sẽ lưu thời gian tại thời điểm đó
+    LocalTime localTime; // Bắt đầu làm bài thì biến " d " sẽ lưu thời gian tại thời điểm đó
 
     public double mathTest() { //Tại tất cả các câu hỏi , khai báo lại biến timenow để lưu thời gian tại thời điểm đó
-
+        localTime = LocalTime.now();
         int count = 0;
         System.out.println("------ BÀI KIỂM TRA TOÁN ------");
         System.out.println("       Bạn có 45' làm bài");
@@ -19,20 +19,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 2) {
             System.out.println("Đúng");
             count++;
-            LocalTime d1 = LocalTime.now();
-            if (d1.getMinute() - localTime.getMinute() == 1 || d1.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -41,19 +33,11 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (b == 3) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.out.println("Hết thời gian , điểm của bạn là : " + count);
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
             System.out.println("Sai");
         }
 
@@ -63,20 +47,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (c == 101) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -85,20 +61,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 12) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -107,20 +75,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 343) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -130,20 +90,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (d == 3.1415) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -152,20 +104,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 444) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -174,20 +118,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 2) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -196,20 +132,12 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 2) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
 
 
@@ -218,21 +146,23 @@ public class SetOfMathQuestion {  //Tại bất kì 1 câu hỏi nào , nếu th
         if (a == 2) {
             System.out.println("Đúng");
             count++;
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         } else {
             System.out.println("Sai");
-            LocalTime d2 = LocalTime.now();
-            if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
-                System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
-                System.out.println();
-                return count;
-            }
+            Integer count1 = integer(count);
+            if (count1 != null) return count1;
         }
         return count;
+    }
+
+    private Integer integer(int count) {
+        LocalTime d2 = LocalTime.now();
+        if (d2.getMinute() - localTime.getMinute() == 1 || d2.getMinute() - localTime.getMinute() == 2) {
+            System.err.println("Hết giờ , điểm của bạn là : " + count + " điểm");
+            System.out.println();
+            return count;
+        }
+        return null;
     }
 }

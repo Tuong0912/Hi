@@ -1,3 +1,5 @@
+import TaiKhoan.Student;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +11,6 @@ public class ManagerStudent {
     SetOfJavaQuestion setOfJavaQuestion = new SetOfJavaQuestion();
     SetOfMathQuestion setOfMathQuestion = new SetOfMathQuestion();
     ReadAndWriteStudent readAndWriteStudent = new ReadAndWriteStudent();
-
     Scanner sc = new Scanner(System.in);
     static ArrayList<Student> students = new ArrayList<>();
     String path = "C:\\Users\\Admin\\Desktop\\QuanLySV\\src\\file\\sinhvien.txt";
@@ -61,11 +62,12 @@ public class ManagerStudent {
             }
         } while (age < 18 || age > 60);
 
-        System.out.println("Nhập giới tính");
+
         String gender;
         System.out.println("1. Chọn nam");
         System.out.println("2. Chọn nữ");
         System.out.println("3. Khác");
+        System.out.print("Chọn giới tính : ");
         int choice = Integer.parseInt(sc.nextLine());
         switch (choice) {
             case 1 -> gender = "Nam";
@@ -76,6 +78,11 @@ public class ManagerStudent {
         System.out.print("Nhập địa chỉ : ");
         String diaChi = sc.nextLine();
 
+        for (Student s : students) {
+            if (id < s.id()) {
+                id = s.id();
+            }
+        }
         id++;
 
         String className;
@@ -175,9 +182,20 @@ public class ManagerStudent {
                     students.get(i).setTuoi(Integer.parseInt(age));
                 }
 
-                System.out.println("Nhập giới tính muốn sửa");
-                String gender = sc.nextLine();
-                if (gender.equals("")) {
+                System.out.println("Thay đổi giới tính");
+                String gender;
+                System.out.println("[1] Nam");
+                System.out.println("[2] Nữ");
+                System.out.println("[3] Khác");
+                System.out.println("[4] Bỏ qua !! ");
+                System.out.print("Chọn : ");
+                int choose = Integer.parseInt(sc.nextLine());
+                switch (choose) {
+                    case 1 -> gender = "Nam";
+                    case 2 -> gender = "Nữ";
+                    default -> gender = "Khác";
+                }
+                if (choose == 4) {
                     System.out.println("Không sửa");
                 } else {
                     students.get(i).setGender(gender);
@@ -191,13 +209,13 @@ public class ManagerStudent {
                     students.get(i).setDiaChi(diaChi);
                 }
 
-                System.out.println("Nhập điểm trung bình muốn sửa");
-                String dtb = sc.nextLine();
-                if (dtb.equals("")) {
-                    System.out.println("Không sửa");
-                } else {
-                    students.get(i).setDtb(Double.parseDouble(dtb));
-                }
+//                System.out.println("Nhập điểm trung bình muốn sửa");
+//                String dtb = sc.nextLine();
+//                if (dtb.equals("")) {
+//                    System.out.println("Không sửa");
+//                } else {
+//                    students.get(i).setDtb(Double.parseDouble(dtb));
+//                }
             }
         }
         readAndWriteStudent.write(students, path);
@@ -267,13 +285,18 @@ public class ManagerStudent {
         boolean check = false;
         for (int i = 0; i < students.size(); i++) {
             if (nameHocSinh.equalsIgnoreCase(students.get(i).ten())) {
-                students.get(i).setMonHoc(chooseASubject());
-                check = true;
+                if (students.get(i).getMonHoc().equals("")) {
+                    students.get(i).setMonHoc(chooseASubject());
+                    check = true;
+                } else {
+                    System.out.println();
+                    System.out.println("Sinh viên đã đăng ký môn rồi");
+                    return;
+                }
             }
         }
-        if (!check) { //*//
-            System.out.println("Sinh viên không tồn tại");
-        }
+        if (!check) System.out.println("Sinh viên không tồn tại");
+
         readAndWriteStudent.write(students, path);
     }
 
@@ -311,24 +334,29 @@ public class ManagerStudent {
     public void registerForTheTest() {
         System.out.print("Nhập tên sinh viên để kiểm tra : ");
         boolean check = false;
-        String nameSinhVien = sc.nextLine();
+        String nameStudent = sc.nextLine();
         for (int i = 0; i < students.size(); i++) {
-            if (nameSinhVien.equalsIgnoreCase(students.get(i).ten())) {
+            if (nameStudent.equalsIgnoreCase(students.get(i).ten())) {
                 check = true;
-                if (students.get(i).getMonHoc().equalsIgnoreCase("Java")) {
-                    students.get(i).setDtb(this.practiceWithJava());
-                    students.get(i).setHanhKiem(this.setConductStudents(students.get(i).dtb()));
-                    break;
-                }
-                if (students.get(i).getMonHoc().equalsIgnoreCase("Toán")) {
-//                    check = true;
-                    students.get(i).setDtb(this.practiceWithMath());
-                    students.get(i).setHanhKiem(this.setConductStudents(students.get(i).dtb()));
-                    break;
+                if (students.get(i).dtb() > 0) {
+                    System.out.println();
+                    System.out.println("Sinh viên đã hoàn thành bài thi , không được làm lại");
+                    return;
+                } else {
+                    if (students.get(i).getMonHoc().equalsIgnoreCase("Java")) {
+                        students.get(i).setDtb(this.practiceWithJava());
+                        students.get(i).setHanhKiem(this.setConductStudents(students.get(i).dtb()));
+                        break;
+                    }
+                    if (students.get(i).getMonHoc().equalsIgnoreCase("Toán")) {
+                        students.get(i).setDtb(this.practiceWithMath());
+                        students.get(i).setHanhKiem(this.setConductStudents(students.get(i).dtb()));
+                        break;
+                    }
                 }
             }
         }
-        if (!check) { //*//
+        if (!check) {
             System.err.println("Sinh viên không tồn tại !! ");
         }
         readAndWriteStudent.write(students, path);
@@ -356,6 +384,7 @@ public class ManagerStudent {
             }
         });
     }
+
 }
 
 

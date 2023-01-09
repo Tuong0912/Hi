@@ -3,22 +3,18 @@ import java.util.Scanner;
 
 public class SetOfJavaQuestion {
     Scanner sc = new Scanner(System.in);
-    LocalTime localTime = LocalTime.now();
-
-//    public int timeSet() {
-//        int countCode = 0;
-//        LocalTime time = LocalTime.now();
-//        if (time.getMinute() - localTime.getMinute() == 1 || time.getMinute() - localTime.getMinute() == 2) {
-//            System.err.println("Hết giờ , điểm của bạn là : " + countCode + " điểm");
-//            return countCode;
-//        }
-//    }
+    LocalTime localTime;
 
     public double javaTest() {
         int countHint = 3;
         int countCode = 0;
+        localTime = LocalTime.now();
+        System.out.println( "                           Thời gian bắt đầu làm " + localTime);
+        System.out.println();
+        System.out.println();
+
         System.out.println("                            ------ BÀI KIỂM TRA JAVA ------");
-        System.out.println("                                   Bạn có 45' làm bài");
+        System.out.println("                                   Bạn có 2' làm bài");
         System.out.println();
 
         System.out.println("                            ------ Bạn có 3 lần gợi ý ------");
@@ -82,8 +78,9 @@ public class SetOfJavaQuestion {
         System.out.println();
 
 
+        System.out.println();
         System.out.println("                            Câu 2 ( Bạn có " + countHint + " lần gợi ý )");
-        System.out.println("                            Có mấy dạng kế thừa trong Java");
+        System.out.println("                            Có mấy 'Dạng' kế thừa trong Java  ");
         System.out.print("Mời nhập đáp án : ");
         a = sc.nextLine();
         if (a.equalsIgnoreCase("Y")) {
@@ -165,7 +162,7 @@ public class SetOfJavaQuestion {
                 Integer countCode1 = checkTime(countCode);
                 if (countCode1 != null) return countCode1;
             } else {
-                System.err.println("Đã gợi ý còn sai , gà vl");
+                System.err.println("Sai     Đáp án : Vị trí 11");
                 Integer countCode1 = checkTime(countCode);
                 if (countCode1 != null) return countCode1;
             }
@@ -181,7 +178,7 @@ public class SetOfJavaQuestion {
         }
 
 
-        System.out.println();
+        System.err.println();
 
 
         System.out.println("                            Câu 4 ( Bạn có " + countHint + " lần gợi ý ) ");
@@ -468,20 +465,20 @@ public class SetOfJavaQuestion {
         System.out.println("                            Câu 9 ( Bạn có " + countHint + " lần gợi ý )");
         System.out.println("                            Phương thức sau đây là loại sắp xếp gì ");
         System.out.println("""
-                public static void selectionSort(int[] array)
+                public static void sort(int[] array)
                 {
-                    int min;
-                    for (int  i = 0; i < array.length - 1; i++){
-                        min = i;
-                        for(int j = i + 1; j < array.length; j++)
-                            if (array[j] < array[min])
-                                min = j;
-                        if (min != i){
-                            int temp = array[min];
-                            array[min] = array[i];
-                            array[i] = temp;
-                        }
-                    }
+                                             int min;
+                                                for (int  i = 0; i < array.length - 1; i++){
+                                                    min = i;
+                                                 for(int j = i + 1; j < array.length; j++)
+                                                      if (array[j] < array[min])
+                                                         min = j;
+                                                  if (min != i){
+                                                       int temp = array[min];
+                                                        array[min] = array[i];
+                                                      array[i] = temp;
+                                                 }
+                                              }
                 }""");
         System.out.println("A. Bubble Sort  ");
         System.out.println("B. Choose Sort  ");
@@ -574,8 +571,6 @@ public class SetOfJavaQuestion {
                 } else System.err.println("Sai       Đáp án : d. Duyệt tuyến tính (Linear Traversal)\n" +
                         "                Feedback");
             }
-
-
         } else if (linearTraversal.equalsIgnoreCase("D")) {
             System.out.println("Đúng");
             countCode++;
@@ -592,13 +587,22 @@ public class SetOfJavaQuestion {
 
     private Integer checkTime(int countCode) {
         LocalTime time = LocalTime.now();
-        if (time.getMinute() - localTime.getMinute() == 1 || time.getMinute() - localTime.getMinute() == 2) {
+        if (time.getMinute() - localTime.getMinute() == 2 || time.getMinute() - localTime.getMinute() == 3) {
+            System.out.println("LocalTime" + localTime);
+            System.out.println("Time" + time);
             System.err.println("Hết giờ , điểm của bạn là : " + countCode + " điểm");
-            System.out.println("---------------------------------------------------");
+            System.out.println("--------------------------------------");
             return countCode;
         }
         return null;
     }
-    //Tìm hiểu thêm về luồng timeline ( thời gian giảm dần cho bài kiểm tra ) - DONE !!!!
-    //Ném bộ câu hỏi sang 1 file text cùng đáp án
+    //        } else {
+    //            System.err.println("Sai       Đáp án : extends");
+    //            Integer countCode1 = checkTime(countCode);
+    //            if (countCode1 != null) return countCode1;
+    //        }
+
+
+    //Tìm hiểu thêm về luồng timeline ( thời gian giảm dần cho bài kiểm tra ) - DONE !!!! - ( Sử dụng LocalTime )
+    //Ném bộ câu hỏi sang 1 file text cùng đáp án - "Too hard for me"
 }

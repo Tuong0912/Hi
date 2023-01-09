@@ -1,3 +1,5 @@
+import TaiKhoan.Account;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -41,7 +43,7 @@ public class ManagerAccount {
                         accountAndPass(name1, pass2);
                         System.out.println("Đăng ky thành công");
                     } else {
-                        System.out.println("Mật khẩu không đúng định dạng , mời nhập lại từ đầu");
+                        System.err.println("Mật khẩu không đủ độ an toàn");
                     }
                 }
             } else {
@@ -56,7 +58,7 @@ public class ManagerAccount {
                     if (pattern.matcher(pass2).matches()) {
                         accountAndPass(name1, pass2);
                         System.out.println("Đăng ký thành công");
-                    } else System.out.println("Mật khẩu không đủ độ an toàn , mời nhập lại từ đầu");
+                    } else System.err.println("Mật khẩu không đủ độ an toàn , mời nhập lại từ đầu");
                 }
             }
         } else {
@@ -73,7 +75,7 @@ public class ManagerAccount {
                     System.out.println("Đăng ký thành công");
                     accountAndPass(name, pass1);
                 } else {
-                    System.out.println("Mật khẩu không đủ độ an toàn");
+                    System.err.println("Mật khẩu không đủ độ an toàn");
                 }
             }
         }
@@ -121,13 +123,13 @@ public class ManagerAccount {
                         quanlytk.put(account.getName(), account.getPass());
                     }
                 } else {
-                    System.out.println("Sai mật khẩu");
+                    System.err.println("Sai mật khẩu");
                 }
             } else {
-                System.out.println("Sai mật khẩu");
+                System.err.println("Sai mật khẩu");
             }
         } else {
-            System.out.println("Tài khoản không tồn tại");
+            System.err.println("Tài khoản không tồn tại");
         }
         readAndWriteAccount.write(quanlytk, path);
     }
@@ -142,11 +144,11 @@ public class ManagerAccount {
                 System.out.println("Đăng nhập thành công");
                 main.studentMenu();
             } else {
-                System.out.println("Sai mật Khẩu");
+                System.err.println("Sai mật Khẩu");
             }
-
         } else {
-            System.out.println("Tài khoản không tồn tại ");
+            System.err.println("Tài khoản không tồn tại ");
+            System.out.println("------------------------");
 
         }
     }
@@ -158,24 +160,25 @@ public class ManagerAccount {
         String pass = sc.nextLine();
         if (taiKhoan.equals("admin")) {
             if (pass.equals("123")) {
-                System.out.println("Chào mừng ADMIN");
-                main.adminMenu();
+                System.out.println();
+                System.out.println("--- Chào mừng ADMIN ---");
+                main.editAccountStudent();
             } else {
-                System.out.println("Sai tài khoản hoặc mật khẩu");
+                System.err.println("Sai tài khoản hoặc mật khẩu");
             }
 
         } else {
-            System.out.println("Sai tài khoản hoặc mật khẩu");
+            System.err.println("Sai tài khoản hoặc mật khẩu");
         }
     }
 
     public void forGotPassWord() {
-        System.out.println("Mời nhập tài khoản");
+        System.out.print("Mời nhập tài khoản : ");
         String name = sc.nextLine();
         if (quanlytk.containsKey(name)) {
             System.out.println("Mật khẩu của bạn là : " + quanlytk.get(name));
         } else {
-            System.out.println("Tài khoản không tồn tại");
+            System.err.println("Tài khoản không tồn tại");
         }
     }
 }
@@ -250,23 +253,3 @@ public class ManagerAccount {
 //    }
 
 
-//    public void dangKyTaiKhoanTest() {
-//        System.out.print("Nhập tài khoản : ");
-//        String name = sc.nextLine();
-//        System.out.print("Nhập mật khẩu : ");
-//        String pass = sc.nextLine();
-//        // Có ít nhất 1 chữ số , 1 chữ thường , 1 chữ hoa , 1 ký tự đặc biệt , không có khoảng trắng và không có space //
-//        Pattern pattern = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}");
-//        if (quanlytk.containsKey(name)) {
-//            System.out.println("Tài khoản đã tồn tại !! ");
-//        } else {
-//            if (pattern.matcher(pass).matches()) {
-//                System.out.println("Đăng nhập thành công");
-//                Account account = new Account(name, pass);
-//                quanlytk.put(account.getName(), account.getPass());
-//            } else {
-//                System.out.println("Mật khẩu không đúng định dạng");
-//            }
-//        }
-//        docGhiFileAcount.write(quanlytk, path);
-//    }
