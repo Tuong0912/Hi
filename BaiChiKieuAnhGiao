@@ -1,0 +1,21 @@
+create table Address(
+id int auto_increment primary key,
+address varchar(255)
+);
+
+create table Classes(
+id int auto_increment primary key unique,
+name varchar(255),
+descriptions varchar(255))
+;
+
+drop table Classes;
+create table Students(
+id int  auto_increment primary key,
+fullname varchar(255),
+address_id int,
+foreign key (address_id) references Address(id),
+phone varchar(255) unique,
+classes_id int ,
+foreign key (classes_id) references Classes(id) 
+);
