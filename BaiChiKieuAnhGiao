@@ -1,21 +1,116 @@
+-------------------------------------
+( Các câu lệnh tạo bảng )
+-------------------------------------
+
 create table Address(
 id int auto_increment primary key,
 address varchar(255)
 );
-
 create table Classes(
 id int auto_increment primary key unique,
 name varchar(255),
-descriptions varchar(255))
-;
+language varchar(255),
+descriptions varchar(255)
+);
 
-drop table Classes;
 create table Students(
 id int  auto_increment primary key,
 fullname varchar(255),
 address_id int,
+age int,
 foreign key (address_id) references Address(id),
 phone varchar(255) unique,
 classes_id int ,
 foreign key (classes_id) references Classes(id) 
 );
+drop table Students;
+drop table Classes;
+drop table Address;
+drop table Point;
+
+create table Course(
+id int auto_increment primary key,
+name varchar(255),
+description varchar(255)
+);
+
+create table Point(
+id int auto_increment primary key ,
+course_id int ,
+foreign key (course_id) references Course(id),
+student_id int ,
+foreign key (student_id) references Students(id),
+point int
+);
+
+-------------------------------------
+( Các câu lệnh thêm dữ liệu cho bảng )
+-------------------------------------
+
+insert into Address(address) values('HN');
+insert into Address(address) values('TH');
+insert into Address(address) values('HP');
+insert into Address(address) values('NA');
+insert into Address(address) values('HCM');
+
+insert into Classes(name , language , descriptions) value('Tuong' ,'TA' , 'tuyetvoi' );
+insert into Classes(name , language , descriptions) value('Nam' ,'TQ' , 'tuyetvoi' );
+insert into Classes(name , language , descriptions) value('Long' ,'VN' , 'tuyetvoi' );
+insert into Classes(name , language , descriptions) value('Hoang' ,'HQ' , 'tuyetvoi' );
+insert into Classes(name , language , descriptions) value('Hieu' ,'VN' , 'tuyetvoi' );
+
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen A' , 1 , 20 , 10123 , 1);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen B' , 2 , 15 , 2123 , 2);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen C' , 3 , 10 , 321 , 3);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen D' , 4 , 27 , 111 , 4);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen E' , 5 , 22 , 333 , 5);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen F' , 1 , 56 , 65 , 1);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen G' , 2 , 43 , 234 , 2);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen H' , 3 , 12 , 876 , 3);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen I' , 4 , 18 , 32145 ,4);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen J' , 5 , 35 , 745 , 5);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen K' , 1 , 35 , 54 , 1);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen L' , 2 , 35 , 2345 , 2);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen M' , 3 , 35 , 4856 , 3);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen N' , 4 , 35 , 77745 , 4);
+insert into Students(fullname , address_id , age , phone , classes_id) values('Nguyen V' , 5 , 35 , 74545 , 5);
+
+insert into Course(name , description) values('A' , 'hehe');
+insert into Course(name , description) values('B' , 'WEQ');
+insert into Course(name , description) values('C' , 'SDF');
+insert into Course(name , description) values('D' , 'GDF');
+insert into Course(name , description) values('E' , 'BVC');
+insert into Course(name , description) values('F' , 'NBV');
+insert into Course(name , description) values('G' , 'XVC');
+insert into Course(name , description) values('G' , 'HDFG');
+insert into Course(name , description) values('I' , 'SDF');
+insert into Course(name , description) values('J' , 'BVC');
+insert into Course(name , description) values('K' , 'SD');
+insert into Course(name , description) values('L' , 'H');
+insert into Course(name , description) values('M' , 'YTH');
+insert into Course(name , description) values('N' , 'TH');
+insert into Course(name , description) values('V' , 'GF');
+
+INSERT INTO Point(course_id  ,student_id , point) values(1 , 1 , 10);
+INSERT INTO Point(course_id  ,student_id , point) values(2 , 2 , 9);
+INSERT INTO Point(course_id  ,student_id , point) values(3 , 3 , 8);
+INSERT INTO Point(course_id  ,student_id , point) values(4 , 4 , 3);
+INSERT INTO Point(course_id  ,student_id , point) values(5 , 5 , 7);
+INSERT INTO Point(course_id  ,student_id , point) values(6 , 6 , 5);
+INSERT INTO Point(course_id  ,student_id , point) values(7 , 7 , 7);
+INSERT INTO Point(course_id  ,student_id , point) values(8 , 8 , 3);
+INSERT INTO Point(course_id  ,student_id , point) values(9 , 9 , 6);
+INSERT INTO Point(course_id  ,student_id , point) values(10 , 10 , 1);
+INSERT INTO Point(course_id  ,student_id , point) values(11 , 11 , 5);
+INSERT INTO Point(course_id  ,student_id , point) values(12 , 12 , 7);
+INSERT INTO Point(course_id  ,student_id , point) values(13 , 13 , 9);
+INSERT INTO Point(course_id  ,student_id , point) values(14 , 14 , 10);
+INSERT INTO Point(course_id  ,student_id , point) values(15 , 15 , 7);
+
+-------------------------------------
+( Các câu lệnh tìm kiếm )
+-------------------------------------
+select * from Students where fullname like 'Nguyen%';
+select * from Students where fullname like '%A';
+select * from Students where age < 25 and age >18;
+select * from Students where id = 9 or id = 13;
